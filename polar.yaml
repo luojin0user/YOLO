@@ -1,0 +1,17 @@
+path: /path/to/POLAR_YOLO
+
+train: images/train
+val: images/val
+test: images/test
+
+nc: 9
+names:
+  - stand
+  - sit
+  - squat
+  - run
+  - walk
+  - jump
+  - bendover
+  - stretch
+  - lying

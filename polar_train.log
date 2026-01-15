@@ -1,0 +1,606 @@
+nohup: ignoring input
+✅ 预处理完成：35324/35324 张样本成功转换
+Ultralytics 8.3.253 🚀 Python-3.10.12 torch-2.9.1+cu130 CUDA:0 (NVIDIA GeForce RTX 4060 Ti, 16380MiB)
+[34m[1mengine/trainer: [0magnostic_nms=False, amp=True, augment=False, auto_augment=randaugment, batch=64, bgr=0.0, box=7.5, cache=False, cfg=None, classes=None, close_mosaic=10, cls=0.5, compile=False, conf=None, copy_paste=0.0, copy_paste_mode=flip, cos_lr=False, cutmix=0.0, data=POLAR_YOLO/polar.yaml, degrees=0.0, deterministic=True, device=0, dfl=1.5, dnn=False, dropout=0.0, dynamic=False, embed=None, epochs=30, erasing=0.4, exist_ok=False, fliplr=0.5, flipud=0.0, format=torchscript, fraction=1.0, freeze=None, half=False, hsv_h=0.015, hsv_s=0.7, hsv_v=0.4, imgsz=640, int8=False, iou=0.7, keras=False, kobj=1.0, line_width=None, lr0=0.0001, lrf=0.01, mask_ratio=4, max_det=300, mixup=0.0, mode=train, model=yolov8n.pt, momentum=0.937, mosaic=1.0, multi_scale=False, name=yolov8_polar7, nbs=64, nms=False, opset=None, optimize=False, optimizer=AdamW, overlap_mask=True, patience=20, perspective=0.0, plots=True, pose=12.0, pretrained=True, profile=False, project=runs/polar, rect=False, resume=False, retina_masks=False, save=True, save_conf=False, save_crop=False, save_dir=/home/luo/code/python/YOLO/runs/detect/runs/polar/yolov8_polar7, save_frames=False, save_json=False, save_period=-1, save_txt=False, scale=0.5, seed=0, shear=0.0, show=False, show_boxes=True, show_conf=True, show_labels=True, simplify=True, single_cls=False, source=None, split=val, stream_buffer=False, task=detect, time=None, tracker=botsort.yaml, translate=0.1, val=True, verbose=True, vid_stride=1, visualize=False, warmup_bias_lr=0.1, warmup_epochs=3.0, warmup_momentum=0.8, weight_decay=0.0005, workers=8, workspace=None
+Overriding model.yaml nc=80 with nc=9
+
+                   from  n    params  module                                       arguments                     
+  0                  -1  1       464  ultralytics.nn.modules.conv.Conv             [3, 16, 3, 2]                 
+  1                  -1  1      4672  ultralytics.nn.modules.conv.Conv             [16, 32, 3, 2]                
+  2                  -1  1      7360  ultralytics.nn.modules.block.C2f             [32, 32, 1, True]             
+  3                  -1  1     18560  ultralytics.nn.modules.conv.Conv             [32, 64, 3, 2]                
+  4                  -1  2     49664  ultralytics.nn.modules.block.C2f             [64, 64, 2, True]             
+  5                  -1  1     73984  ultralytics.nn.modules.conv.Conv             [64, 128, 3, 2]               
+  6                  -1  2    197632  ultralytics.nn.modules.block.C2f             [128, 128, 2, True]           
+  7                  -1  1    295424  ultralytics.nn.modules.conv.Conv             [128, 256, 3, 2]              
+  8                  -1  1    460288  ultralytics.nn.modules.block.C2f             [256, 256, 1, True]           
+  9                  -1  1    164608  ultralytics.nn.modules.block.SPPF            [256, 256, 5]                 
+ 10                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']          
+ 11             [-1, 6]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 12                  -1  1    148224  ultralytics.nn.modules.block.C2f             [384, 128, 1]                 
+ 13                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']          
+ 14             [-1, 4]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 15                  -1  1     37248  ultralytics.nn.modules.block.C2f             [192, 64, 1]                  
+ 16                  -1  1     36992  ultralytics.nn.modules.conv.Conv             [64, 64, 3, 2]                
+ 17            [-1, 12]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 18                  -1  1    123648  ultralytics.nn.modules.block.C2f             [192, 128, 1]                 
+ 19                  -1  1    147712  ultralytics.nn.modules.conv.Conv             [128, 128, 3, 2]              
+ 20             [-1, 9]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 21                  -1  1    493056  ultralytics.nn.modules.block.C2f             [384, 256, 1]                 
+ 22        [15, 18, 21]  1    753067  ultralytics.nn.modules.head.Detect           [9, [64, 128, 256]]           
+Model summary: 129 layers, 3,012,603 parameters, 3,012,587 gradients, 8.2 GFLOPs
+
+Transferred 319/355 items from pretrained weights
+Freezing layer 'model.22.dfl.conv.weight'
+[34m[1mAMP: [0mrunning Automatic Mixed Precision (AMP) checks...
+[34m[1mAMP: [0mchecks passed ✅
+[34m[1mtrain: [0mFast image access ✅ (ping: 0.0±0.0 ms, read: 3543.7±1394.0 MB/s, size: 106.7 KB)
+[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 18 images, 0 backgrounds, 0 corrupt: 0% ──────────── 18/21194 53.7it/s 0.1s<6:34[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 155 images, 0 backgrounds, 0 corrupt: 1% ──────────── 155/21194 421.9it/s 0.2s<49.9s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 312 images, 0 backgrounds, 0 corrupt: 1% ──────────── 312/21194 724.9it/s 0.3s<28.8s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 478 images, 0 backgrounds, 0 corrupt: 2% ──────────── 478/21194 983.1it/s 0.4s<21.1s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 628 images, 0 backgrounds, 0 corrupt: 3% ──────────── 628/21194 1.1Kit/s 0.5s<18.1s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 779 images, 0 backgrounds, 0 corrupt: 4% ──────────── 779/21194 1.2Kit/s 0.6s<16.4s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 922 images, 0 backgrounds, 0 corrupt: 4% ╸─────────── 922/21194 1.3Kit/s 0.7s<15.7s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 1069 images, 0 backgrounds, 0 corrupt: 5% ╸─────────── 1069/21194 1.3Kit/s 0.8s<15.0s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 1221 images, 0 backgrounds, 0 corrupt: 6% ╸─────────── 1221/21194 1.4Kit/s 0.9s<14.3s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 1360 images, 0 backgrounds, 0 corrupt: 6% ╸─────────── 1360/21194 1.4Kit/s 1.0s<14.3s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 1516 images, 0 backgrounds, 0 corrupt: 7% ╸─────────── 1516/21194 1.4Kit/s 1.1s<13.8s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 1668 images, 0 backgrounds, 0 corrupt: 8% ╸─────────── 1668/21194 1.5Kit/s 1.2s<13.4s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 1822 images, 0 backgrounds, 0 corrupt: 9% ━─────────── 1822/21194 1.5Kit/s 1.3s<13.1s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 1970 images, 0 backgrounds, 0 corrupt: 9% ━─────────── 1970/21194 1.5Kit/s 1.4s<13.1s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 2122 images, 0 backgrounds, 0 corrupt: 10% ━─────────── 2122/21194 1.5Kit/s 1.5s<12.8s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 2272 images, 0 backgrounds, 0 corrupt: 11% ━─────────── 2272/21194 1.5Kit/s 1.6s<12.8s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 2425 images, 0 backgrounds, 0 corrupt: 11% ━─────────── 2425/21194 1.5Kit/s 1.7s<12.6s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 2571 images, 0 backgrounds, 0 corrupt: 12% ━─────────── 2571/21194 1.5Kit/s 1.8s<12.6s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 2721 images, 0 backgrounds, 0 corrupt: 13% ━╸────────── 2721/21194 1.5Kit/s 1.9s<12.6s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 2874 images, 0 backgrounds, 0 corrupt: 14% ━╸────────── 2874/21194 1.5Kit/s 2.0s<12.4s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 3022 images, 0 backgrounds, 0 corrupt: 14% ━╸────────── 3022/21194 1.5Kit/s 2.1s<12.3s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 3174 images, 0 backgrounds, 0 corrupt: 15% ━╸────────── 3174/21194 1.5Kit/s 2.2s<12.1s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 3325 images, 0 backgrounds, 0 corrupt: 16% ━╸────────── 3325/21194 1.5Kit/s 2.3s<12.0s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 3479 images, 0 backgrounds, 0 corrupt: 16% ━╸────────── 3479/21194 1.5Kit/s 2.4s<11.8s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 3629 images, 0 backgrounds, 0 corrupt: 17% ━━────────── 3629/21194 1.5Kit/s 2.5s<11.7s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 3770 images, 0 backgrounds, 0 corrupt: 18% ━━────────── 3770/21194 1.5Kit/s 2.6s<11.9s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 3913 images, 0 backgrounds, 0 corrupt: 18% ━━────────── 3913/21194 1.5Kit/s 2.7s<11.9s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 4050 images, 0 backgrounds, 0 corrupt: 19% ━━────────── 4050/21194 1.4Kit/s 2.8s<12.0s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 4192 images, 0 backgrounds, 0 corrupt: 20% ━━────────── 4192/21194 1.4Kit/s 2.9s<11.9s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 4334 images, 0 backgrounds, 0 corrupt: 20% ━━────────── 4334/21194 1.4Kit/s 3.1s<12.0s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 4472 images, 0 backgrounds, 0 corrupt: 21% ━━╸───────── 4472/21194 1.4Kit/s 3.2s<11.9s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 4613 images, 0 backgrounds, 0 corrupt: 22% ━━╸───────── 4613/21194 1.4Kit/s 3.3s<11.8s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 4759 images, 0 backgrounds, 0 corrupt: 22% ━━╸───────── 4759/21194 1.4Kit/s 3.4s<11.6s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 4896 images, 0 backgrounds, 0 corrupt: 23% ━━╸───────── 4896/21194 1.4Kit/s 3.5s<11.6s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 5034 images, 0 backgrounds, 0 corrupt: 24% ━━╸───────── 5034/21194 1.4Kit/s 3.6s<11.6s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 5178 images, 0 backgrounds, 0 corrupt: 24% ━━╸───────── 5178/21194 1.4Kit/s 3.7s<11.4s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 5317 images, 0 backgrounds, 0 corrupt: 25% ━━━───────── 5317/21194 1.4Kit/s 3.8s<11.4s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 5456 images, 0 backgrounds, 0 corrupt: 26% ━━━───────── 5456/21194 1.4Kit/s 3.9s<11.4s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 5598 images, 0 backgrounds, 0 corrupt: 26% ━━━───────── 5598/21194 1.4Kit/s 4.0s<11.3s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 5745 images, 0 backgrounds, 0 corrupt: 27% ━━━───────── 5745/21194 1.4Kit/s 4.1s<11.0s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 5885 images, 0 backgrounds, 0 corrupt: 28% ━━━───────── 5885/21194 1.4Kit/s 4.2s<11.0s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 6025 images, 0 backgrounds, 0 corrupt: 28% ━━━───────── 6025/21194 1.4Kit/s 4.3s<10.9s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 6173 images, 0 backgrounds, 0 corrupt: 29% ━━━───────── 6173/21194 1.4Kit/s 4.4s<10.6s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 6313 images, 0 backgrounds, 0 corrupt: 30% ━━━╸──────── 6313/21194 1.4Kit/s 4.5s<10.7s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 6465 images, 0 backgrounds, 0 corrupt: 31% ━━━╸──────── 6465/21194 1.4Kit/s 4.6s<10.3s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 6618 images, 0 backgrounds, 0 corrupt: 31% ━━━╸──────── 6618/21194 1.5Kit/s 4.7s<10.0s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 6744 images, 0 backgrounds, 0 corrupt: 32% ━━━╸──────── 6744/21194 1.4Kit/s 4.8s<10.5s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 6890 images, 0 backgrounds, 0 corrupt: 33% ━━━╸──────── 6890/21194 1.4Kit/s 4.9s<10.2s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 7036 images, 0 backgrounds, 0 corrupt: 33% ━━━╸──────── 7036/21194 1.4Kit/s 5.0s<10.0s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 7187 images, 0 backgrounds, 0 corrupt: 34% ━━━━──────── 7187/21194 1.4Kit/s 5.1s<9.7s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 7343 images, 0 backgrounds, 0 corrupt: 35% ━━━━──────── 7343/21194 1.5Kit/s 5.2s<9.4s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 7494 images, 0 backgrounds, 0 corrupt: 35% ━━━━──────── 7494/21194 1.5Kit/s 5.3s<9.2s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 7646 images, 0 backgrounds, 0 corrupt: 36% ━━━━──────── 7646/21194 1.5Kit/s 5.4s<9.1s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 7762 images, 0 backgrounds, 0 corrupt: 37% ━━━━──────── 7762/21194 1.4Kit/s 5.5s<9.7s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 7912 images, 0 backgrounds, 0 corrupt: 37% ━━━━──────── 7912/21194 1.4Kit/s 5.6s<9.4s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 8061 images, 0 backgrounds, 0 corrupt: 38% ━━━━╸─────── 8061/21194 1.4Kit/s 5.7s<9.2s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 8218 images, 0 backgrounds, 0 corrupt: 39% ━━━━╸─────── 8218/21194 1.5Kit/s 5.8s<8.9s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 8373 images, 0 backgrounds, 0 corrupt: 40% ━━━━╸─────── 8373/21194 1.5Kit/s 5.9s<8.7s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 8522 images, 0 backgrounds, 0 corrupt: 40% ━━━━╸─────── 8522/21194 1.5Kit/s 6.0s<8.6s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 8665 images, 0 backgrounds, 0 corrupt: 41% ━━━━╸─────── 8665/21194 1.5Kit/s 6.1s<8.6s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 8819 images, 0 backgrounds, 0 corrupt: 42% ━━━━╸─────── 8819/21194 1.5Kit/s 6.2s<8.5s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 8982 images, 0 backgrounds, 0 corrupt: 42% ━━━━━─────── 8982/21194 1.5Kit/s 6.3s<8.1s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 9126 images, 0 backgrounds, 0 corrupt: 43% ━━━━━─────── 9126/21194 1.5Kit/s 6.4s<8.2s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 9269 images, 0 backgrounds, 0 corrupt: 44% ━━━━━─────── 9269/21194 1.4Kit/s 6.5s<8.2s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 9419 images, 0 backgrounds, 0 corrupt: 44% ━━━━━─────── 9419/21194 1.5Kit/s 6.6s<8.1s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 9578 images, 0 backgrounds, 0 corrupt: 45% ━━━━━─────── 9578/21194 1.5Kit/s 6.7s<7.9s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 9740 images, 0 backgrounds, 0 corrupt: 46% ━━━━━╸────── 9740/21194 1.5Kit/s 6.8s<7.6s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 9886 images, 0 backgrounds, 0 corrupt: 47% ━━━━━╸────── 9886/21194 1.5Kit/s 6.9s<7.6s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 10037 images, 0 backgrounds, 0 corrupt: 47% ━━━━━╸────── 10037/21194 1.5Kit/s 7.0s<7.5s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 10185 images, 0 backgrounds, 0 corrupt: 48% ━━━━━╸────── 10185/21194 1.5Kit/s 7.1s<7.5s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 10346 images, 0 backgrounds, 0 corrupt: 49% ━━━━━╸────── 10346/21194 1.5Kit/s 7.2s<7.2s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 10492 images, 0 backgrounds, 0 corrupt: 50% ━━━━━╸────── 10492/21194 1.5Kit/s 7.3s<7.2s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 10647 images, 0 backgrounds, 0 corrupt: 50% ━━━━━━────── 10647/21194 1.5Kit/s 7.4s<7.0s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 10800 images, 0 backgrounds, 0 corrupt: 51% ━━━━━━────── 10800/21194 1.5Kit/s 7.5s<6.9s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 10950 images, 0 backgrounds, 0 corrupt: 52% ━━━━━━────── 10950/21194 1.5Kit/s 7.6s<6.8s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 11097 images, 0 backgrounds, 0 corrupt: 52% ━━━━━━────── 11097/21194 1.5Kit/s 7.7s<6.8s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 11242 images, 0 backgrounds, 0 corrupt: 53% ━━━━━━────── 11242/21194 1.5Kit/s 7.8s<6.7s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 11396 images, 0 backgrounds, 0 corrupt: 54% ━━━━━━────── 11396/21194 1.5Kit/s 7.9s<6.6s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 11548 images, 0 backgrounds, 0 corrupt: 54% ━━━━━━╸───── 11548/21194 1.5Kit/s 8.0s<6.4s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 11698 images, 0 backgrounds, 0 corrupt: 55% ━━━━━━╸───── 11698/21194 1.5Kit/s 8.1s<6.3s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 11845 images, 0 backgrounds, 0 corrupt: 56% ━━━━━━╸───── 11845/21194 1.5Kit/s 8.2s<6.3s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 11982 images, 0 backgrounds, 0 corrupt: 57% ━━━━━━╸───── 11982/21194 1.4Kit/s 8.3s<6.4s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 12145 images, 0 backgrounds, 0 corrupt: 57% ━━━━━━╸───── 12145/21194 1.5Kit/s 8.4s<6.0s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 12293 images, 0 backgrounds, 0 corrupt: 58% ━━━━━━╸───── 12293/21194 1.5Kit/s 8.5s<6.0s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 12439 images, 0 backgrounds, 0 corrupt: 59% ━━━━━━━───── 12439/21194 1.5Kit/s 8.6s<6.0s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 12587 images, 0 backgrounds, 0 corrupt: 59% ━━━━━━━───── 12587/21194 1.5Kit/s 8.7s<5.9s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 12748 images, 0 backgrounds, 0 corrupt: 60% ━━━━━━━───── 12748/21194 1.5Kit/s 8.8s<5.6s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 12897 images, 0 backgrounds, 0 corrupt: 61% ━━━━━━━───── 12897/21194 1.5Kit/s 8.9s<5.6s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 13050 images, 0 backgrounds, 0 corrupt: 62% ━━━━━━━───── 13050/21194 1.5Kit/s 9.0s<5.4s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 13194 images, 0 backgrounds, 0 corrupt: 62% ━━━━━━━───── 13194/21194 1.5Kit/s 9.1s<5.5s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 13361 images, 0 backgrounds, 0 corrupt: 63% ━━━━━━━╸──── 13361/21194 1.5Kit/s 9.2s<5.2s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 13512 images, 0 backgrounds, 0 corrupt: 64% ━━━━━━━╸──── 13512/21194 1.5Kit/s 9.3s<5.1s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 13663 images, 0 backgrounds, 0 corrupt: 64% ━━━━━━━╸──── 13663/21194 1.5Kit/s 9.4s<5.0s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 13814 images, 0 backgrounds, 0 corrupt: 65% ━━━━━━━╸──── 13814/21194 1.5Kit/s 9.5s<4.9s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 13963 images, 0 backgrounds, 0 corrupt: 66% ━━━━━━━╸──── 13963/21194 1.5Kit/s 9.6s<4.8s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 14105 images, 0 backgrounds, 0 corrupt: 67% ━━━━━━━╸──── 14105/21194 1.5Kit/s 9.8s<4.8s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 14266 images, 0 backgrounds, 0 corrupt: 67% ━━━━━━━━──── 14266/21194 1.5Kit/s 9.9s<4.6s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 14422 images, 0 backgrounds, 0 corrupt: 68% ━━━━━━━━──── 14422/21194 1.5Kit/s 10.0s<4.5s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 14568 images, 0 backgrounds, 0 corrupt: 69% ━━━━━━━━──── 14568/21194 1.5Kit/s 10.1s<4.4s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 14702 images, 0 backgrounds, 0 corrupt: 69% ━━━━━━━━──── 14702/21194 1.4Kit/s 10.2s<4.5s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 14831 images, 0 backgrounds, 0 corrupt: 70% ━━━━━━━━──── 14831/21194 1.4Kit/s 10.3s<4.6s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 14978 images, 0 backgrounds, 0 corrupt: 71% ━━━━━━━━──── 14978/21194 1.4Kit/s 10.4s<4.4s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 15122 images, 0 backgrounds, 0 corrupt: 71% ━━━━━━━━╸─── 15122/21194 1.4Kit/s 10.5s<4.3s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 15264 images, 0 backgrounds, 0 corrupt: 72% ━━━━━━━━╸─── 15264/21194 1.4Kit/s 10.6s<4.2s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 15399 images, 0 backgrounds, 0 corrupt: 73% ━━━━━━━━╸─── 15399/21194 1.4Kit/s 10.7s<4.2s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 15542 images, 0 backgrounds, 0 corrupt: 73% ━━━━━━━━╸─── 15542/21194 1.4Kit/s 10.8s<4.0s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 15679 images, 0 backgrounds, 0 corrupt: 74% ━━━━━━━━╸─── 15679/21194 1.4Kit/s 10.9s<4.1s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 15730 images, 0 backgrounds, 0 corrupt: 74% ━━━━━━━━╸─── 15730/21194 955.5it/s 13.1s<5.7s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 15865 images, 0 backgrounds, 0 corrupt: 75% ━━━━━━━━╸─── 15865/21194 1.0Kit/s 13.2s<5.1s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 16016 images, 0 backgrounds, 0 corrupt: 76% ━━━━━━━━━─── 16016/21194 1.2Kit/s 13.3s<4.4s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 16147 images, 0 backgrounds, 0 corrupt: 76% ━━━━━━━━━─── 16147/21194 1.2Kit/s 13.4s<4.2s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 16290 images, 0 backgrounds, 0 corrupt: 77% ━━━━━━━━━─── 16290/21194 1.3Kit/s 13.5s<3.9s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 16434 images, 0 backgrounds, 0 corrupt: 78% ━━━━━━━━━─── 16434/21194 1.3Kit/s 13.6s<3.6s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 16568 images, 0 backgrounds, 0 corrupt: 78% ━━━━━━━━━─── 16568/21194 1.3Kit/s 13.7s<3.5s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 16713 images, 0 backgrounds, 0 corrupt: 79% ━━━━━━━━━─── 16713/21194 1.3Kit/s 13.8s<3.4s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 16862 images, 0 backgrounds, 0 corrupt: 80% ━━━━━━━━━╸── 16862/21194 1.4Kit/s 13.9s<3.2s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 16999 images, 0 backgrounds, 0 corrupt: 80% ━━━━━━━━━╸── 16999/21194 1.4Kit/s 14.0s<3.1s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 17137 images, 0 backgrounds, 0 corrupt: 81% ━━━━━━━━━╸── 17137/21194 1.4Kit/s 14.1s<3.0s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 17277 images, 0 backgrounds, 0 corrupt: 82% ━━━━━━━━━╸── 17277/21194 1.4Kit/s 14.2s<2.9s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 17412 images, 0 backgrounds, 0 corrupt: 82% ━━━━━━━━━╸── 17412/21194 1.4Kit/s 14.3s<2.8s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 17552 images, 0 backgrounds, 0 corrupt: 83% ━━━━━━━━━╸── 17552/21194 1.4Kit/s 14.4s<2.7s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 17688 images, 0 backgrounds, 0 corrupt: 83% ━━━━━━━━━━── 17688/21194 1.4Kit/s 14.5s<2.6s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 17833 images, 0 backgrounds, 0 corrupt: 84% ━━━━━━━━━━── 17833/21194 1.4Kit/s 14.6s<2.4s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 17982 images, 0 backgrounds, 0 corrupt: 85% ━━━━━━━━━━── 17982/21194 1.4Kit/s 14.7s<2.3s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 18135 images, 0 backgrounds, 0 corrupt: 86% ━━━━━━━━━━── 18135/21194 1.4Kit/s 14.8s<2.1s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 18276 images, 0 backgrounds, 0 corrupt: 86% ━━━━━━━━━━── 18276/21194 1.4Kit/s 14.9s<2.1s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 18430 images, 0 backgrounds, 0 corrupt: 87% ━━━━━━━━━━── 18430/21194 1.4Kit/s 15.0s<1.9s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 18585 images, 0 backgrounds, 0 corrupt: 88% ━━━━━━━━━━╸─ 18585/21194 1.5Kit/s 15.1s<1.8s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 18731 images, 0 backgrounds, 0 corrupt: 88% ━━━━━━━━━━╸─ 18731/21194 1.4Kit/s 15.2s<1.7s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 18886 images, 0 backgrounds, 0 corrupt: 89% ━━━━━━━━━━╸─ 18886/21194 1.5Kit/s 15.3s<1.6s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 19030 images, 0 backgrounds, 0 corrupt: 90% ━━━━━━━━━━╸─ 19030/21194 1.5Kit/s 15.4s<1.5s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 19183 images, 0 backgrounds, 0 corrupt: 91% ━━━━━━━━━━╸─ 19183/21194 1.5Kit/s 15.5s<1.4s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 19339 images, 0 backgrounds, 0 corrupt: 91% ━━━━━━━━━━╸─ 19339/21194 1.5Kit/s 15.6s<1.2s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 19486 images, 0 backgrounds, 0 corrupt: 92% ━━━━━━━━━━━─ 19486/21194 1.5Kit/s 15.7s<1.2s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 19636 images, 0 backgrounds, 0 corrupt: 93% ━━━━━━━━━━━─ 19636/21194 1.5Kit/s 15.8s<1.1s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 19786 images, 0 backgrounds, 0 corrupt: 93% ━━━━━━━━━━━─ 19786/21194 1.5Kit/s 15.9s<0.9s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 19936 images, 0 backgrounds, 0 corrupt: 94% ━━━━━━━━━━━─ 19936/21194 1.5Kit/s 16.0s<0.8s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 20085 images, 0 backgrounds, 0 corrupt: 95% ━━━━━━━━━━━─ 20085/21194 1.5Kit/s 16.1s<0.7s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 20228 images, 0 backgrounds, 0 corrupt: 95% ━━━━━━━━━━━─ 20228/21194 1.4Kit/s 16.2s<0.7s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 20379 images, 0 backgrounds, 0 corrupt: 96% ━━━━━━━━━━━╸ 20379/21194 1.5Kit/s 16.3s<0.6s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 20523 images, 0 backgrounds, 0 corrupt: 97% ━━━━━━━━━━━╸ 20523/21194 1.5Kit/s 16.4s<0.5s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 20672 images, 0 backgrounds, 0 corrupt: 98% ━━━━━━━━━━━╸ 20672/21194 1.5Kit/s 16.5s<0.4s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 20815 images, 0 backgrounds, 0 corrupt: 98% ━━━━━━━━━━━╸ 20815/21194 1.4Kit/s 16.6s<0.3s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 20960 images, 0 backgrounds, 0 corrupt: 99% ━━━━━━━━━━━╸ 20960/21194 1.4Kit/s 16.7s<0.2s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 21098 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━╸ 21098/21194 1.4Kit/s 16.8s<0.1s[K[34m[1mtrain: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/train... 21194 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 21194/21194 1.3Kit/s 16.9s
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_00008.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_00019.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_00214.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_00261.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_00280.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_00289.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_00485.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_00515.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_00623.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_00824.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_00852.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_01036.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_01229.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_01261.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_01531.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_01533.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_01573.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_01674.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_01877.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_01905.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_02035.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_02040.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_02115.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_02129.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_02248.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_02259.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_02344.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_02433.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_02560.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_02821.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_02852.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_03141.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_03320.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_03457.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_03636.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_03742.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_04043.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_04051.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_04074.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_04080.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_04187.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_04225.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_04356.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_04386.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_04543.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_04551.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_04681.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_04789.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_04865.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_05600.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_05913.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_05988.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_06026.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_06098.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_06112.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_06186.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_06652.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_06657.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_06678.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_06686.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_06886.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_07002.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_07307.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_07362.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_07540.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_07594.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_07606.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_07952.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_08105.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_08200.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_08272.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_08310.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_08413.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_08541.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_08695.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_08711.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_08883.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_08913.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_09132.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_09332.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_09638.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_09716.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_09854.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_09982.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_09998.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_09999.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_10302.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_10416.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_10424.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_10440.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_10501.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_10504.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_10592.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_10684.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_10768.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_10938.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_11009.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_11098.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_11134.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_11240.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_11313.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_11484.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_11494.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_11632.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_11774.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_12209.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_12255.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_12300.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_12361.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_12564.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_12577.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_12683.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_12794.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_13018.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_13035.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_13107.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_13112.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_13199.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_13410.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_13450.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_13482.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_13513.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_13561.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_13927.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_14124.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_14149.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_14269.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_14399.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_14455.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_14687.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_14977.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_15044.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_15053.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_15329.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_15343.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_15362.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_15459.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_15470.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_15508.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_15512.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_15547.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_15707.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_15790.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_15857.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_15913.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_15957.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_15970.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_16021.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_16155.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_16459.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_16571.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_16618.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_16756.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_16906.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_16988.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_17278.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_17344.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_17347.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_17472.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_17760.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_17803.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_17810.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_18241.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_18441.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_18610.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_18747.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_18763.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_18842.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_18887.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_18893.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_18906.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_19016.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_19250.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_19378.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_19550.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_19589.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_19614.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_19671.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_19713.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_19803.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_19835.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_19903.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_19955.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_19959.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_19976.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_20011.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_20100.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_20211.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_20393.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_20400.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_20478.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_20520.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_20540.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_20617.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_20640.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_20642.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_20744.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_20943.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_20947.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_20995.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_21306.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_21339.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_21393.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_21503.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_21782.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_21844.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_21901.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_21976.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_22059.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_22073.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_22117.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_22258.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_22688.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_23021.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_23066.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_23134.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_23391.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_23416.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_23573.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_23659.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_23845.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_24127.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_24269.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_24300.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_24386.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_24595.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_24605.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_24786.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_24828.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_24915.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_24917.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_24919.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_24989.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_25040.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_25080.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_25298.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_25432.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_25663.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_25701.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_25917.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_25928.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_26240.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_26380.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_26382.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_26443.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_26539.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_26697.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_26712.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_26845.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_26855.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_26871.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_26963.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_26993.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_27031.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_27047.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_27118.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_27256.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_27401.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_27511.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_27534.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_27647.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_27668.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_27730.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_27748.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_27784.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_27904.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_27973.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_28210.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_28253.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_28282.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_28330.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_28401.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_28567.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_28710.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_28717.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_28854.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_28966.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_29011.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_29027.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_29057.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_29114.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_29227.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_29253.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_29278.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_29396.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_29416.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_29417.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_29443.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_29520.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_29539.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_29716.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_29980.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_30037.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_30077.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_30105.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_30205.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_30423.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_30424.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_30495.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_30506.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_30526.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_30568.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_30625.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_30714.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_30729.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_30765.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_30780.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_30825.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_30826.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_30997.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_31034.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_31158.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_31160.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_31308.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_31334.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_31406.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_31469.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_31488.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_31536.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_31544.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_31555.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_31788.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_31817.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_31822.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_31838.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_31864.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_32019.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_32060.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_32151.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_32155.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_32248.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_32376.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_32425.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_32476.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_32602.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_32615.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_32627.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_32631.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_32870.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_32963.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_33092.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_33113.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_33125.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_33156.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_33434.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_33442.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_33450.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_33574.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_33623.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_33647.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_33710.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_33735.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_33765.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_33774.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_33781.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_33811.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_33849.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_33863.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_33872.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_33929.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_34025.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_34035.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_34081.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_34153.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_34164.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_34288.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_34307.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_34395.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_34439.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_34593.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_34607.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_34678.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_34724.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_34725.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_34729.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_34735.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_34754.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_34785.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_34786.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_34799.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_34905.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_34952.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_34982.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_35056.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_35062.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_35063.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_35090.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_35104.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_35113.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_35124.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_35130.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_35170.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_35200.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_35207.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_35267.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_35275.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_35290.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_35291.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_35292.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_35303.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_35319.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/train/p1_35324.jpg: corrupt JPEG restored and saved
+[34m[1mtrain: [0mNew cache created: /home/luo/code/python/YOLO/POLAR_YOLO/labels/train.cache
+[34m[1mval: [0mFast image access ✅ (ping: 0.0±0.0 ms, read: 597.3±281.9 MB/s, size: 104.7 KB)
+[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 38 images, 0 backgrounds, 0 corrupt: 1% ──────────── 38/7065 101.2it/s 0.1s<1:09[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 100 images, 0 backgrounds, 0 corrupt: 1% ──────────── 100/7065 254.9it/s 0.2s<27.3s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 157 images, 0 backgrounds, 0 corrupt: 2% ──────────── 157/7065 348.3it/s 0.3s<19.8s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 212 images, 0 backgrounds, 0 corrupt: 3% ──────────── 212/7065 406.3it/s 0.4s<16.9s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 269 images, 0 backgrounds, 0 corrupt: 4% ──────────── 269/7065 439.7it/s 0.5s<15.5s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 332 images, 0 backgrounds, 0 corrupt: 5% ╸─────────── 332/7065 487.4it/s 0.6s<13.8s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 383 images, 0 backgrounds, 0 corrupt: 5% ╸─────────── 383/7065 491.6it/s 0.7s<13.6s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 434 images, 0 backgrounds, 0 corrupt: 6% ╸─────────── 434/7065 491.1it/s 0.8s<13.5s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 487 images, 0 backgrounds, 0 corrupt: 7% ╸─────────── 487/7065 498.6it/s 0.9s<13.2s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 538 images, 0 backgrounds, 0 corrupt: 8% ╸─────────── 538/7065 495.5it/s 1.0s<13.2s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 589 images, 0 backgrounds, 0 corrupt: 8% ━─────────── 589/7065 497.6it/s 1.1s<13.0s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 645 images, 0 backgrounds, 0 corrupt: 9% ━─────────── 645/7065 507.7it/s 1.3s<12.6s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 701 images, 0 backgrounds, 0 corrupt: 10% ━─────────── 701/7065 498.0it/s 1.4s<12.8s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 752 images, 0 backgrounds, 0 corrupt: 11% ━─────────── 752/7065 490.9it/s 1.5s<12.9s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 817 images, 0 backgrounds, 0 corrupt: 12% ━─────────── 817/7065 535.8it/s 1.6s<11.7s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 864 images, 0 backgrounds, 0 corrupt: 12% ━─────────── 864/7065 511.9it/s 1.7s<12.1s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 920 images, 0 backgrounds, 0 corrupt: 13% ━╸────────── 920/7065 489.0it/s 1.8s<12.6s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 981 images, 0 backgrounds, 0 corrupt: 14% ━╸────────── 981/7065 523.0it/s 1.9s<11.6s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 1030 images, 0 backgrounds, 0 corrupt: 15% ━╸────────── 1030/7065 508.3it/s 2.0s<11.9s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 1084 images, 0 backgrounds, 0 corrupt: 15% ━╸────────── 1084/7065 513.8it/s 2.1s<11.6s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 1129 images, 0 backgrounds, 0 corrupt: 16% ━╸────────── 1129/7065 492.8it/s 2.2s<12.0s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 1186 images, 0 backgrounds, 0 corrupt: 17% ━━────────── 1186/7065 514.8it/s 2.3s<11.4s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 1235 images, 0 backgrounds, 0 corrupt: 17% ━━────────── 1235/7065 471.2it/s 2.5s<12.4s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 1295 images, 0 backgrounds, 0 corrupt: 18% ━━────────── 1295/7065 508.8it/s 2.6s<11.3s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 1344 images, 0 backgrounds, 0 corrupt: 19% ━━────────── 1344/7065 498.9it/s 2.7s<11.5s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 1394 images, 0 backgrounds, 0 corrupt: 20% ━━────────── 1394/7065 493.1it/s 2.8s<11.5s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 1448 images, 0 backgrounds, 0 corrupt: 20% ━━────────── 1448/7065 504.8it/s 2.9s<11.1s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 1503 images, 0 backgrounds, 0 corrupt: 21% ━━╸───────── 1503/7065 515.0it/s 3.0s<10.8s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 1554 images, 0 backgrounds, 0 corrupt: 22% ━━╸───────── 1554/7065 507.7it/s 3.1s<10.9s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 1609 images, 0 backgrounds, 0 corrupt: 23% ━━╸───────── 1609/7065 519.4it/s 3.2s<10.5s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 1684 images, 0 backgrounds, 0 corrupt: 24% ━━╸───────── 1684/7065 587.3it/s 3.3s<9.2s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 1822 images, 0 backgrounds, 0 corrupt: 26% ━━━───────── 1822/7065 815.1it/s 3.4s<6.4s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 1954 images, 0 backgrounds, 0 corrupt: 28% ━━━───────── 1954/7065 965.5it/s 3.5s<5.3s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 2090 images, 0 backgrounds, 0 corrupt: 30% ━━━╸──────── 2090/7065 1.1Kit/s 3.6s<4.6s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 2228 images, 0 backgrounds, 0 corrupt: 32% ━━━╸──────── 2228/7065 1.2Kit/s 3.7s<4.1s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 2355 images, 0 backgrounds, 0 corrupt: 33% ━━━━──────── 2355/7065 1.2Kit/s 3.8s<4.0s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 2501 images, 0 backgrounds, 0 corrupt: 35% ━━━━──────── 2501/7065 1.3Kit/s 3.9s<3.6s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 2642 images, 0 backgrounds, 0 corrupt: 37% ━━━━──────── 2642/7065 1.3Kit/s 4.0s<3.4s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 2777 images, 0 backgrounds, 0 corrupt: 39% ━━━━╸─────── 2777/7065 1.3Kit/s 4.1s<3.3s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 2912 images, 0 backgrounds, 0 corrupt: 41% ━━━━╸─────── 2912/7065 1.3Kit/s 4.2s<3.2s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 3044 images, 0 backgrounds, 0 corrupt: 43% ━━━━━─────── 3044/7065 1.3Kit/s 4.3s<3.1s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 3171 images, 0 backgrounds, 0 corrupt: 45% ━━━━━─────── 3171/7065 1.3Kit/s 4.4s<3.0s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 3314 images, 0 backgrounds, 0 corrupt: 47% ━━━━━╸────── 3314/7065 1.3Kit/s 4.5s<2.8s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 3447 images, 0 backgrounds, 0 corrupt: 49% ━━━━━╸────── 3447/7065 1.3Kit/s 4.6s<2.8s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 3597 images, 0 backgrounds, 0 corrupt: 51% ━━━━━━────── 3597/7065 1.4Kit/s 4.7s<2.5s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 3733 images, 0 backgrounds, 0 corrupt: 53% ━━━━━━────── 3733/7065 1.4Kit/s 4.8s<2.5s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 3861 images, 0 backgrounds, 0 corrupt: 55% ━━━━━━╸───── 3861/7065 1.3Kit/s 4.9s<2.4s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 3998 images, 0 backgrounds, 0 corrupt: 57% ━━━━━━╸───── 3998/7065 1.3Kit/s 5.0s<2.3s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 4123 images, 0 backgrounds, 0 corrupt: 58% ━━━━━━━───── 4123/7065 1.3Kit/s 5.1s<2.3s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 4271 images, 0 backgrounds, 0 corrupt: 60% ━━━━━━━───── 4271/7065 1.4Kit/s 5.2s<2.1s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 4415 images, 0 backgrounds, 0 corrupt: 62% ━━━━━━━───── 4415/7065 1.4Kit/s 5.3s<1.9s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 4565 images, 0 backgrounds, 0 corrupt: 65% ━━━━━━━╸──── 4565/7065 1.4Kit/s 5.4s<1.8s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 4712 images, 0 backgrounds, 0 corrupt: 67% ━━━━━━━━──── 4712/7065 1.4Kit/s 5.5s<1.7s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 4852 images, 0 backgrounds, 0 corrupt: 69% ━━━━━━━━──── 4852/7065 1.4Kit/s 5.6s<1.6s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 4982 images, 0 backgrounds, 0 corrupt: 71% ━━━━━━━━──── 4982/7065 1.3Kit/s 5.7s<1.5s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 5139 images, 0 backgrounds, 0 corrupt: 73% ━━━━━━━━╸─── 5139/7065 1.4Kit/s 5.8s<1.4s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 5286 images, 0 backgrounds, 0 corrupt: 75% ━━━━━━━━╸─── 5286/7065 1.4Kit/s 5.9s<1.3s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 5444 images, 0 backgrounds, 0 corrupt: 77% ━━━━━━━━━─── 5444/7065 1.4Kit/s 6.0s<1.1s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 5595 images, 0 backgrounds, 0 corrupt: 79% ━━━━━━━━━╸── 5595/7065 1.5Kit/s 6.1s<1.0s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 5744 images, 0 backgrounds, 0 corrupt: 81% ━━━━━━━━━╸── 5744/7065 1.5Kit/s 6.2s<0.9s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 5899 images, 0 backgrounds, 0 corrupt: 83% ━━━━━━━━━━── 5899/7065 1.5Kit/s 6.3s<0.8s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 6050 images, 0 backgrounds, 0 corrupt: 86% ━━━━━━━━━━── 6050/7065 1.5Kit/s 6.4s<0.7s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 6202 images, 0 backgrounds, 0 corrupt: 88% ━━━━━━━━━━╸─ 6202/7065 1.5Kit/s 6.5s<0.6s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 6355 images, 0 backgrounds, 0 corrupt: 90% ━━━━━━━━━━╸─ 6355/7065 1.5Kit/s 6.6s<0.5s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 6503 images, 0 backgrounds, 0 corrupt: 92% ━━━━━━━━━━━─ 6503/7065 1.5Kit/s 6.7s<0.4s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 6648 images, 0 backgrounds, 0 corrupt: 94% ━━━━━━━━━━━─ 6648/7065 1.5Kit/s 6.8s<0.3s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 6797 images, 0 backgrounds, 0 corrupt: 96% ━━━━━━━━━━━╸ 6797/7065 1.4Kit/s 6.9s<0.2s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 6932 images, 0 backgrounds, 0 corrupt: 98% ━━━━━━━━━━━╸ 6932/7065 1.4Kit/s 7.0s<0.1s[K[34m[1mval: [0mScanning /home/luo/code/python/YOLO/POLAR_YOLO/labels/val... 7065 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 7065/7065 992.1it/s 7.1s
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_00140.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_00161.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_00217.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_00757.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_01003.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_01173.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_01238.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_01802.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_02305.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_02614.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_02712.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_02837.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_02957.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_03114.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_03463.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_03785.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_04122.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_04668.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_05040.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_05219.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_05234.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_05403.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_05423.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_05485.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_05580.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_06049.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_06105.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_08233.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_08586.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_08895.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_09341.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_09784.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_10053.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_10428.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_10631.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_11120.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_11340.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_11353.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_11658.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_11817.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_11830.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_12131.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_13936.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_14108.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_14134.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_14324.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_14704.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_14757.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_14799.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_14904.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_15391.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_15432.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_15614.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_15776.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_15936.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_16016.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_16500.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_16830.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_16863.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_17297.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_17566.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_17604.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_18459.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_19079.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_19085.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_19136.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_19226.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_19261.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_19354.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_19516.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_19545.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_19588.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_20172.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_20448.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_20455.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_20599.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_20788.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_21184.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_21190.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_21381.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_21466.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_21759.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_21784.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_22083.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_22564.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_22756.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_22777.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_22795.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_22802.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_22918.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_23049.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_23931.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_23937.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_24040.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_24116.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_24677.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_24725.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_24835.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_25008.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_25073.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_25180.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_25447.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_25672.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_26171.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_26177.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_26305.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_26403.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_26719.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_27117.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_27575.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_28100.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_28460.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_28681.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_28773.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_29139.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_29324.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_29409.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_29659.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_29684.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_30384.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_30727.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_30938.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_31130.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_32153.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_32220.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_32279.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_32363.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_32399.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_32437.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_32529.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_32596.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_32667.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_32851.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_32978.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_33070.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_33899.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_33961.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_34003.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_34073.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_34157.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_34216.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_34253.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_34295.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_34446.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_34480.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_34547.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_34664.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_34674.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_34713.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_34939.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_35179.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_35226.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_35312.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0m/home/luo/code/python/YOLO/POLAR_YOLO/images/val/p1_35321.jpg: corrupt JPEG restored and saved
+[34m[1mval: [0mNew cache created: /home/luo/code/python/YOLO/POLAR_YOLO/labels/val.cache
+Plotting labels to /home/luo/code/python/YOLO/runs/detect/runs/polar/yolov8_polar7/labels.jpg... 
+[34m[1moptimizer:[0m AdamW(lr=0.0001, momentum=0.937) with parameter groups 57 weight(decay=0.0), 64 weight(decay=0.0005), 63 bias(decay=0.0)
+Image sizes 640 train, 640 val
+Using 8 dataloader workers
+Logging results to [1m/home/luo/code/python/YOLO/runs/detect/runs/polar/yolov8_polar7[0m
+Starting training for 30 epochs...
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
