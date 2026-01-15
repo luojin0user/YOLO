@@ -4,7 +4,7 @@ import os
 
 def main():
     # 1. 加载训练好的模型
-    model = YOLO("runs/detect/runs/polar/yolov8_polar6/weights/best.pt")
+    model = YOLO("runs/detect/runs/polar/yolov8_polar/weights/best.pt")
 
     # 2. 推理源（图片 / 文件夹 / 视频 / 摄像头）
     source = "test.jpg"   # 可换成 0 / video.mp4 / images/
